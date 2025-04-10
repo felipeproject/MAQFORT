@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAQFORT | Máquinas para Marmoraria</title>
+  <meta name="description" content="MAQFORT | Máquinas para Marmoraria" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind.config.js"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+
+<body class="bg-background text-neutral font-sans flex flex-col min-h-screen">
+
+  <!-- Navbar (injetada via layout.js) -->
+  <div id="navbar"></div>
+
+  <!-- Conteúdo principal -->
+<main class="flex-grow pt-16">
+  <!-- Hero Section -->
+  <section class="relative h-[80vh] sm:h-[90vh] bg-cover bg-center"
+    style="background-image: url('images/hero.jpg');">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div
+      class="relative z-10 max-w-xl sm:max-w-2xl mx-auto text-center px-4 flex flex-col items-center justify-center h-full text-white">
+      <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4" data-aos="fade-down">
+        <i class="fas fa-industry mr-2"></i>
+        Soluções Industriais para Marmorarias
+      </h1>
+      <p class="text-base sm:text-lg md:text-xl mb-8" data-aos="fade-up" data-aos-delay="200">
+        Equipamentos robustos e tecnologia de ponta para elevar a eficiência do seu negócio.
+      </p>
+      <!-- Botão de Produtos que leva para produtos.html -->
+      <a href="produtos.html"
+        class="bg-accent hover:bg-primary text-white font-semibold py-2 sm:py-3 px-6 sm:px-8 rounded-full shadow-lg transition focus:ring-4 focus:ring-accent/10"
+        data-aos="zoom-in" data-aos-delay="400">
+        <i class="fa-solid fa-store"></i> Produtos
+      </a> <BR>
+      <!-- Botão de Conheça Mais -->
+      <a href="#servicos"
+        class="bg-accent hover:bg-primary text-white font-semibold py-2 sm:py-3 px-6 sm:px-8 rounded-full shadow-lg transition focus:ring-4 focus:ring-accent/10"
+        data-aos="zoom-in" data-aos-delay="400">
+        <i class="fas fa-arrow-down mr-2"></i> Conheça Mais
+      </a>
+    </div>
+  </section>
+</main>
+
+
+    <!-- Sobre -->
+    <section id="sobre" class="py-16 sm:py-20 bg-white">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-primary mb-4" data-aos="fade-up">
+          <i class="fas fa-users mr-2"></i> Quem Somos
+        </h2>
+        <p class="text-base sm:text-lg text-neutral" data-aos="fade-up" data-aos-delay="100">
+          Na Maqfort, desenvolvemos soluções sob medida para marmorarias e indústrias que buscam otimização de
+          processos,
+          precisão e durabilidade. Oferecemos equipamentos industriais de alta qualidade com suporte especializado.
+        </p>
+      </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-16 sm:py-20 bg-background">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-primary mb-8" data-aos="fade-up">
+          <i class="fas fa-wrench mr-2"></i> Nossos Serviços
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl shadow" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-cogs text-3xl text-primary mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2">Instalação</h3>
+            <p class="text-neutral">Montagem e configuração industrial com precisão e segurança.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-screwdriver-wrench text-3xl text-primary mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2">Manutenção</h3>
+            <p class="text-neutral">Serviços preventivos e corretivos com agilidade técnica.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow" data-aos="fade-up" data-aos-delay="300">
+            <i class="fas fa-headset text-3xl text-primary mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2">Suporte</h3>
+            <p class="text-neutral">Atendimento técnico para garantir seu equipamento funcionando sempre.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vídeo Promocional -->
+    <section class="bg-white py-16 sm:py-20">
+      <div class="max-w-5xl mx-auto px-4 text-center">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-primary mb-6" data-aos="fade-up">
+          <i class="fas fa-bullhorn mr-2"></i>Transforme sua Marmoraria Agora!
+        </h2>
+        <p class="text-lg text-neutral mb-4" data-aos="fade-up" data-aos-delay="100">
+          Quer aumentar sua produção, atender mais clientes e levar sua marmoraria a outro nível?
+          No nosso novo vídeo, você vai conhecer máquinas incríveis que revolucionam o corte e o polimento de mármores e
+          granitos.
+        </p>
+
+        <!-- YouTube Video -->
+        <div class="relative w-full pt-[56.25%] mb-8" data-aos="zoom-in" data-aos-delay="200">
+          <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-lg"
+            src="https://www.youtube.com/embed/7e1Or-xs0rM" title="Maqfort - Máquinas para Marmoraria" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Informações de Contato -->
+    <section class="bg-white py-16 sm:py-20">
+      <div class="max-w-5xl mx-auto px-4 text-center">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-primary mb-6" data-aos="fade-up">
+          <i class="fas fa-phone-alt mr-2"></i> Fale Conosco
+        </h2>
+        <p class="text-lg text-neutral mb-6" data-aos="fade-up" data-aos-delay="100">
+          Entre em contato conosco para mais informações sobre nossos produtos e serviços!
+        </p>
+
+        <div class="text-left sm:text-center max-w-2xl mx-auto space-y-3 text-neutral text-base sm:text-lg"
+          data-aos="fade-up" data-aos-delay="300">
+          <p><i class="fas fa-map-marker-alt text-primary mr-2"></i><strong>Endereço:</strong> POLO INDUSTRIAL, Estrada
+            Pádua, Itaocara Km5, Santo Antônio de Pádua, RJ</p>
+          <p><i class="fas fa-phone text-primary mr-2"></i><strong>Telefone Fixo:</strong> (22) 3851-2350</p>
+          <p><i class="fas fa-envelope text-primary mr-2"></i><strong>Email:</strong> contato.maqfort@gmail.com</p>
+          <p><i class="fas fa-mobile-alt text-primary mr-2"></i><strong>WhatsApp:</strong> (22) 99204-2269</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Horário de Funcionamento -->
+    <section class="bg-background py-8">
+      <div class="max-w-5xl mx-auto px-4 text-center">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-primary mb-4" data-aos="fade-up">
+          <i class="fas fa-clock mr-2"></i> Horário de Funcionamento
+        </h2>
+        <p class="text-lg sm:text-xl text-neutral mb-6">Fechado agora</p>
+        <div class="text-left text-neutral text-base sm:text-lg">
+          <p><strong>Segunda:</strong> 08:00 às 17:00</p>
+          <p><strong>Terça:</strong> 08:00 às 17:00</p>
+          <p><strong>Quarta:</strong> 08:00 às 17:00</p>
+          <p><strong>Quinta:</strong> 08:00 às 17:00</p>
+          <p><strong>Sexta:</strong> 08:00 às 17:00</p>
+          <p><strong>Sábado:</strong> FECHADO</p>
+          <p><strong>Domingo:</strong> FECHADO</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (injetado via layout.js) -->
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="scripts.js"></script>
+  <script src="cart.js"></script>
+  <script src="layout.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Produtos - Maqfort Equipamentos Industriais" />
+  <title>Produtos - Maqfort</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#802A31',
+            accent: '#C66B31',
+            neutral: '#333',
+            background: '#F5F5F5',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-background text-neutral font-sans">
+  <!-- Navbar dinâmica -->
+  <div id="navbar"></div>
+
+  <!-- Conteúdo Principal -->
+  <main class="mt-24 px-4">
+    <!-- Barra de Busca -->
+    <div class="max-w-7xl mx-auto mb-6">
+      <div class="flex items-center bg-white shadow-md rounded-lg overflow-hidden">
+        <span class="px-4 text-primary text-xl"><i class="fas fa-search"></i></span>
+        <input type="text" id="searchInput" placeholder="Buscar produtos..." class="w-full py-3 px-4 text-base focus:outline-none" oninput="filterProducts()" />
+      </div>
+    </div>
+
+    <!-- Produtos -->
+    <section id="productContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+      <!-- Produtos carregados dinamicamente -->
+    </section>
+  </main>
+
+  <!-- Footer dinâmica -->
+  <div id="footer" class="mt-12"></div>
+
+  <!-- Script de produtos -->
+  <script>
+    let allProducts = [];
+
+    async function loadProducts() {
+      try {
+        const response = await fetch('produtos.json');
+        allProducts = await response.json();
+        renderProducts(allProducts);
+      } catch (error) {
+        console.error("Erro ao carregar produtos:", error);
+      }
+    }
+
+    function renderProducts(produtos) {
+      const container = document.getElementById('productContainer');
+      container.innerHTML = '';
+
+      if (produtos.length === 0) {
+        container.innerHTML = '<p class="col-span-full text-center text-gray-600 text-lg">Nenhum produto encontrado.</p>';
+        return;
+      }
+
+      produtos.forEach(produto => {
+        const descricaoLimitada = produto.descricao.length > 100
+          ? produto.descricao.slice(0, 100) + '...'
+          : produto.descricao;
+
+        const card = document.createElement('div');
+        card.className = 'bg-white p-6 rounded-xl shadow-lg transition-transform duration-300 hover:scale-105';
+
+        card.innerHTML = `
+          <img src="${produto.imagens[0]}" alt="${produto.nome}" class="rounded-md mb-4 w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
+          <h2 class="text-2xl font-semibold text-primary mb-2">${produto.nome}</h2>
+          <p class="text-sm text-neutral mb-2">${descricaoLimitada}</p>
+          <p class="text-lg font-bold text-accent">${produto.preco}</p>
+          <div class="flex space-x-2 mt-4">
+            <button class="bg-primary hover:bg-accent text-white py-2 px-4 rounded-lg add-to-cart-btn flex items-center gap-2 transition duration-300" data-id="${produto.id}">
+              <i class="fas fa-cart-plus cart-icon transition-transform duration-300"></i> 
+              <span class="btn-text">Adicionar</span>
+            </button>
+            <a href="detalhes.html?id=${produto.id}" class="bg-accent hover:bg-primary text-white py-2 px-4 rounded-lg flex items-center gap-2 transition duration-300">
+              <i class="fas fa-search"></i> Detalhes
+            </a>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+
+      bindCartButtons();
+    }
+
+    function filterProducts() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const filtered = allProducts.filter(p =>
+        p.nome.toLowerCase().includes(input) ||
+        p.descricao.toLowerCase().includes(input)
+      );
+      renderProducts(filtered);
+    }
+
+    function bindCartButtons() {
+      document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const id = button.dataset.id;
+          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+          cart.push(id);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+
+          const icon = button.querySelector('.cart-icon');
+          const text = button.querySelector('.btn-text');
+
+          icon.classList.replace('fa-cart-plus', 'fa-spinner');
+          icon.classList.add('animate-spin');
+          text.textContent = 'Adicionando...';
+          button.classList.add('animate-pulse');
+          button.disabled = true;
+
+          setTimeout(() => {
+            icon.classList.remove('animate-spin');
+            icon.classList.replace('fa-spinner', 'fa-cart-plus');
+            text.textContent = 'Adicionar';
+            button.classList.remove('animate-pulse');
+            button.disabled = false;
+          }, 800);
+        });
+      });
+    }
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const countElement = document.getElementById('cart-count');
+      if (countElement) countElement.textContent = cart.length;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadProducts();
+      updateCartCount();
+    });
+  </script>
+
+  <!-- Layout Dinâmico -->
+  <script src="layout.js"></script>
+</body>
+</html>

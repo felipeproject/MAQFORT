@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Detalhes do Produto - Maqfort Equipamentos Industriais" />
+  <title>Detalhes do Produto - Maqfort</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#802A31',
+            accent: '#C66B31',
+            background: '#F5F5F5'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-background font-sans text-neutral select-none overflow-x-hidden">
+
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Conteúdo -->
+  <main class="container mx-auto px-4 sm:px-6 pt-24 pb-16 min-h-[calc(100vh-160px)]">
+    <div id="product-detail" class="bg-white p-6 rounded-xl shadow-lg"></div>
+  </main>
+
+  <!-- Modal de imagem -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50" onclick="handleBackdropClick(event)">
+    <div class="relative max-w-[90%] max-h-[90%] flex items-center">
+      <button onclick="prevImage()" class="text-white text-3xl absolute left-[-2.5rem] hover:scale-125 transition z-10">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <img id="modal-image" class="max-w-full max-h-[80vh] rounded-xl border border-white shadow-xl" alt="Imagem do Produto" />
+
+      <button onclick="nextImage()" class="text-white text-3xl absolute right-[-2.5rem] hover:scale-125 transition z-10">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+      <button onclick="closeModal()" class="absolute top-2 right-2 bg-white text-black text-2xl rounded-full w-9 h-9 flex items-center justify-center hover:scale-110 transition z-10">
+        &times;
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="layout.js"></script>
+  <script>
+    let currentImageIndex = 0;
+    let images = [];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchProductDetails();
+      updateCartCount();
+    });
+
+    async function fetchProductDetails() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id');
+
+      try {
+        const response = await fetch('produtos.json');
+        const produtos = await response.json();
+        const produto = produtos.find(p => p.id === parseInt(productId));
+
+        if (produto) {
+          renderProductDetail(produto);
+        } else {
+          document.getElementById('product-detail').innerHTML = '<p class="text-red-500">Produto não encontrado.</p>';
+        }
+      } catch (error) {
+        console.error('Erro ao carregar produto:', error);
+      }
+    }
+
+    function renderProductDetail(produto) {
+      const container = document.getElementById('product-detail');
+      images = produto.imagens;
+
+      const imagensHtml = produto.imagens.map((img, i) =>
+        `<img src="${img}" alt="${produto.nome}" class="rounded-xl object-cover w-full cursor-pointer hover:scale-105 transition shadow" onclick="openModal(${i})" />`
+      ).join('');
+
+      const detalhesHtml = `
+        <h1 class="text-3xl font-bold text-primary mb-4">${produto.nome}</h1>
+        <p class="text-gray-700 mb-4">${produto.descricao}</p>
+        <h2 class="text-xl font-semibold mb-2">Detalhes:</h2>
+        <ul class="list-disc list-inside text-gray-700 mb-4">
+          ${produto.detalhes.map(item => `<li>${item}</li>`).join('')}
+        </ul>
+        <p class="text-xl font-bold text-primary mb-6">${produto.preco}</p>
+        <div class="flex flex-wrap gap-4 mb-6">
+          <button class="bg-primary hover:bg-accent text-white py-2 px-6 rounded-lg transition" onclick="addToCart(${produto.id})">
+            <i class="fas fa-cart-plus mr-2"></i>Adicionar ao Carrinho
+          </button>
+          <button class="bg-accent hover:bg-gray-500 text-white py-2 px-6 rounded-lg transition" onclick="buyNow(${produto.id})">
+            <i class="fas fa-credit-card mr-2"></i>Comprar Agora
+          </button>
+        </div>
+        <a href="produtos.html" class="inline-block bg-gray-200 text-primary py-2 px-6 rounded-lg hover:bg-gray-300 transition">
+          <i class="fas fa-arrow-left mr-2"></i>Voltar
+        </a>
+      `;
+
+      container.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">${imagensHtml}</div>
+          <div>${detalhesHtml}</div>
+        </div>
+      `;
+    }
+
+    function addToCart(productId) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(productId);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+      alert('Produto adicionado ao carrinho!');
+    }
+
+    function buyNow(productId) {
+      window.location.href = `checkout.html?productId=${productId}`;
+    }
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = document.getElementById('cart-count');
+      if (cartCount) cartCount.textContent = cart.length;
+    }
+
+    function openModal(index) {
+      currentImageIndex = index;
+      showImage();
+      const modal = document.getElementById('modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.addEventListener('keydown', handleKeyPress);
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.removeEventListener('keydown', handleKeyPress);
+    }
+
+    function handleBackdropClick(e) {
+      if (e.target.id === 'modal') closeModal();
+    }
+
+    function handleKeyPress(e) {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    }
+
+    function showImage() {
+      const modalImage = document.getElementById('modal-image');
+      modalImage.src = images[currentImageIndex];
+    }
+
+    function nextImage() {
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      showImage();
+    }
+
+    function prevImage() {
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+      showImage();
+    }
+  </script>
+</body>
+</html>

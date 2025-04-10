@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sobre - Maqfort Equipamentos Industriais" />
+  <title>Sobre - Maqfort</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#802A31',
+            accent: '#C66B31',
+            background: '#F5F5F5',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-background text-neutral font-sans">
+  <!-- Navbar dinâmica -->
+  <div id="navbar"></div>
+
+  <!-- HERO -->
+  <section class="relative bg-white py-20 px-6 shadow-md mt-24">
+    <div class="max-w-6xl mx-auto text-center">
+      <h1 class="text-5xl font-bold text-primary mb-4">Excelência em Inovação Industrial</h1>
+      <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+        A <strong>MAQFORT</strong> transforma produtividade em potência! Há mais de 20 anos fabricando máquinas robustas e soluções eficientes
+        para marmorarias, serrarias e setores industriais em todo o Brasil.
+      </p>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="max-w-5xl mx-auto px-6 py-16 text-justify">
+    <div class="space-y-6 text-lg leading-relaxed">
+      <p>
+        Com espírito inovador e paixão por engenharia de qualidade, a <strong>MAQFORT Equipamentos Industriais</strong>
+        atua com excelência no mercado nacional, oferecendo maquinários de alta performance para demandas que exigem
+        resistência, precisão e durabilidade.
+      </p>
+      <p>
+        Somos referência em equipamentos para marmorarias, serrarias e sistemas de elevação. Cada máquina é desenvolvida
+        com foco total na produtividade do cliente. Além disso, fornecemos assistência técnica especializada,
+        manutenção completa e ampla linha de peças de reposição.
+      </p>
+      <p>
+        Atuamos com flexibilidade em condições de pagamento e financiamentos acessíveis, incluindo BNDES, linhas bancárias
+        e cartões de crédito. Nossa missão é entregar soluções completas que impulsionem o crescimento de quem confia na MAQFORT.
+      </p>
+    </div>
+  </section>
+
+  <!-- DESTAQUES -->
+  <section class="bg-white py-16 shadow-inner">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center text-primary mb-10">Por que escolher a MAQFORT?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-center">
+        <div class="bg-background rounded-xl p-6 hover:shadow-lg transition duration-300">
+          <i class="fas fa-industry text-4xl text-primary mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Especialização</h3>
+          <p>Engenharia de precisão voltada para setores que exigem o melhor da indústria nacional.</p>
+        </div>
+        <div class="bg-background rounded-xl p-6 hover:shadow-lg transition duration-300">
+          <i class="fas fa-users-cog text-4xl text-primary mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Equipe Técnica</h3>
+          <p>Profissionais altamente qualificados que dominam o processo do início ao fim.</p>
+        </div>
+        <div class="bg-background rounded-xl p-6 hover:shadow-lg transition duration-300">
+          <i class="fas fa-tools text-4xl text-primary mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Manutenção e Peças</h3>
+          <p>Suporte completo com peças originais e manutenção preventiva e corretiva em todo o Brasil.</p>
+        </div>
+        <div class="bg-background rounded-xl p-6 hover:shadow-lg transition duration-300">
+          <i class="fas fa-handshake text-4xl text-primary mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Facilidade no Pagamento</h3>
+          <p>Financiamentos flexíveis, incluindo BNDES e bancos parceiros. Facilidade total para seu investimento.</p>
+        </div>
+        <div class="bg-background rounded-xl p-6 hover:shadow-lg transition duration-300">
+          <i class="fas fa-map-marked-alt text-4xl text-primary mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Cobertura Nacional</h3>
+          <p>Atendimento em todo o território brasileiro com agilidade, compromisso e confiança.</p>
+        </div>
+        <div class="bg-background rounded-xl p-6 hover:shadow-lg transition duration-300">
+          <i class="fas fa-award text-4xl text-primary mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Tradição e Confiança</h3>
+          <p>Mais de duas décadas transformando desafios industriais em conquistas para nossos clientes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer dinâmica -->
+  <div id="footer"></div>
+
+  <!-- Script layout -->
+  <script src="layout.js"></script>
+</body>
+</html>

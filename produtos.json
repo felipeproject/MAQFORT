@@ -1,0 +1,81 @@
+[
+    {
+        "id": 1,
+        "nome": "SERRA LTM 180° - Automática",
+        "descricao": "As serras automáticas da Maqfort combinam\r\nprecisão, eficiência e tecnologia de ponta para\r\nelevar a produtividade da sua marmoraria.\r\nProjetadas para cortes rápidos e perfeitos em\r\nmármore e granito, essas máquinas garantem alta\r\nperformance com o mínimo de esforço humano.\r\nInvista na automatização e experimente o que há\r\nde melhor no mercado.",
+        "preco": "R$ 104.000 à vista",
+        "imagens": [
+            "images\/produtos\/serra_ltm_180_automatica_1.png",
+            "images\/produtos\/serra_ltm_180_automatica_2.png",
+            "images\/produtos\/serra_ltm_180_automatica_3.png"
+        ],
+        "detalhes": [
+            "Cortes que a máquina realiza:",
+            "Reto, 45°, 180° (encabeçar), Redondo, Rebaixo",
+            "Estrutura: Base de 6 metros",
+            "Mesa tanker de 3,3 x 2,0 metros",
+            "Altura de 2.2 metros",
+            "Recursos exclusivos:",
+            "Mesa e movimentos automaticos com controle de velocidade",
+            "Painel: Motor principal de 10CV, Motor de elevação 2,0 CV, Motor de translação 0,5 CV"
+        ]
+    },
+    {
+        "id": 2,
+        "nome": "SERRA SRG - Automática",
+        "descricao": "Com as serras automáticas da Maqfort, sua\r\nmarmoraria ganha em agilidade, eficiência e\r\nqualidade. Desenvolvidas para atender às\r\ndemandas mais exigentes, essas máquinas\r\noferecem cortes rápidos, precisos e com\r\nacabamento impecável.",
+        "preco": "R$ 74.000 à vista",
+        "imagens": [
+            "images\/produtos\/serra_srg_automatica_1.png",
+            "images\/produtos\/serra_srg_automatica_2.png",
+            "images\/produtos\/serra_srg_automatica_3.png"
+        ],
+        "detalhes": [
+            "Cortes que a máquina realiza: Reto, 45°, Redondo, Rebaixo",
+            "Estrutura: Base de 6 metros, Mesa tanker de 3,0 x 1,8 metros,  Altura de 2.2 metros",
+            "Recursos exclusivos: Mesa e movimentos automaticos com controle de velocidade",
+            "Boleado",
+            "Painel: Motor principal de 10CV, Motor de elevação 2,0 CV, Motor de translação 0,5 CV"
+        ]
+    },
+    {
+        "id": 3,
+        "nome": "SERRA FUSION MH - Automática",
+        "descricao": "A Maqfort traz para sua marmoraria as melhores\r\nsoluções em serras automáticas. Com a\r\ncombinação do modelo LTM e SRG a máquina é\r\nEquipada com recursos avançados, que\r\ngarantem cortes precisos e consistentes, além\r\nde maior agilidade nos processos produtivos.",
+        "preco": "R$ 134.000 à vista",
+        "imagens": [
+            "images\/produtos\/serra_fusion_mh_automatica_1.png",
+            "images\/produtos\/serra_fusion_mh_automatica_2.png",
+            "images\/produtos\/serra_fusion_mh_automatica_3.png"
+        ],
+        "detalhes": [
+            "Cortes que a máquina realiza:",
+            "Reto, 45°, 180°, Redondo, Rebaixo",
+            "",
+            "Estrutura:",
+            "Base de 6 metros, Mesa tanker de 3,3 x 2,0 metros, Altura de 2,2 metros",
+            "",
+            "Recursos exclusivos:",
+            "Mesa e movimentos automáticos com controle de velocidade, Boleado",
+            "",
+            "Painel:",
+            "02 Motores principais de 10CV, 02 Motores de elevação 2,0CV, 02 Motores de translação 0,5CV",
+            ""
+        ]
+    },
+    {
+        "id": 4,
+        "nome": "SERRA SRF-E - Mesa manual",
+        "descricao": "Cortes que a máquina realiza:  \r\nReto, 45°, 180° (automático), Redondo, Rebaixo  \r\nEstrutura:  \r\nBase de 6 metros, Mesa tanker de 3,0 x 1,8 metros, Altura de 2,2 metros  ",
+        "preco": "R$ 99.000 à vista",
+        "imagens": [
+            "images\/produtos\/serra_srf-e_mesa_manual_1.png",
+            "images\/produtos\/serra_srf-e_mesa_manual_2.png"
+        ],
+        "detalhes": [
+            "Recursos exclusivos:",
+            "Boleado, Mesa com avanço manual.",
+            "Painel: Motor disco A: 10CV, Motor disco B: 7,5CV, Motor para elevação do disco A: 2,0CV, 02 Motores de translação: 0,5CV"
+        ]
+    }
+]
